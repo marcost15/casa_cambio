@@ -33,5 +33,5 @@ m2 = "
 [bd]
 host  = localhost
 login = root
-clave = 12345678
+clave = 12345
 bd	= casa_cambio
