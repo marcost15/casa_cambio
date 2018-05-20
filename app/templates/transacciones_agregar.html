@@ -1,0 +1,31 @@
+{include file="iniciov.html"}
+{$f}
+{include file="finalv.html"}
+
+{literal}
+<script>
+var f1 = new LiveValidation('monto_envia'); f1.add( Validate.Presence );f1.add( Validate.Numericality );
+</script>
+<script>
+$(document).ready(function() {
+     var max = 0;
+     $(".etiqueta1").each(function(){
+         if ($(this).width() > max)
+             max = $(this).width();
+     });
+
+
+     $(".etiqueta1").width(max + 10);
+     $(".fila_form:odd").addClass('form_impar');
+
+     var max2 = 0;
+     $(".campo1").each(function(){
+         if ($(this).width() > max2)
+             max2 = $(this).width();
+     });
+
+     $(".campo1").width(max2 + 10);
+
+ });
+</script>
+{/literal}

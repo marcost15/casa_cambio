@@ -1,0 +1,97 @@
+{include file="inicio0.html"}
+
+<div class="container">
+	<div class="col-sm-6">
+		<div class="page-header">
+			<h1>Clientes <a class="btn btn-default btn-lg" title="Agregar" href="#"
+            onClick='eModal.iframe("clientes_agregar.php","Agregar Clientes")'><i
+            class="fa fa-plus"></i></a></h1>
+
+    </div>
+    </div>
+    <div class="col-sm-6">
+    <div class="page-header">
+    <form action="ventana_cliente_envia.php" method="POST">
+                <div class="input-group">
+                  <span class="input-group-addon" id="basic-addon1" style="padding:0 12px;"><i class="fa fa-search"></i></span>
+                  <input id="p" name="p" type="text" class="form-control" placeholder="Escriba aquí y pulse INTRO para buscar en clientes" aria-describedby="basic-addon1">
+                </div>
+            </form>
+    </div>
+    </div>
+</div>
+
+<div class="tabla">
+<div class="mipaginacion">
+    <form style="display:inline">
+        <select name="ad" onchange="salta(this.form)">{section name=ii loop=$paginas}
+            <option {if $pagina_actual==$smarty.section.ii.iteration}selected="selected"{/if}
+                value="ventana_cliente_envia.php?pag={$smarty.section.ii.iteration}&i={$paginas[ii]}">Página {$smarty.section.ii.iteration}</option>
+        {/section}</select>
+    </form> de {$n_paginas}.
+</div>
+<!-- div>{$datos_debug}</div -->
+</p>
+<table id="tabla_clientes" style="width:100%;" border="1"
+    class="table table-condensed table-hover table-striped table-bordered display">
+    <thead>
+    <tr>
+<th data-column-id="id">{$meta.id.etiqueta}</th>
+<th data-column-id="dni">{$meta.dni.etiqueta}</th>
+<th data-column-id="nombre">{$meta.nombre.etiqueta}</th>
+<th data-column-id="apellido">{$meta.apellido.etiqueta}</th>
+<th data-column-id="tlf">{$meta.tlf.etiqueta}</th>
+<th data-column-id="correo">{$meta.correo.etiqueta}</th>
+<th></th>
+    </tr></thead><tbody>
+{section name=i loop=$datos}
+    <tr>
+<td>{$datos[i].id}</td>
+<td>{$datos[i].dni}</td>
+<td>{$datos[i].nombre}</td>
+<td>{$datos[i].apellido}</td>
+<td>{$datos[i].tlf}</td>
+<td>{$datos[i].correo}</td>
+   <td class="text-center" style="white-space: nowrap;">
+        <a style="margin-bottom:3px" class="btn btn-default" title="Seleccionar" href="javascript:void(0)"
+            onClick="actualizar('{$datos[i].id}','{$datos[i].nombreape}');" onmouseout='return nd();'><i class="fa fa-pencil-square-o"></i></a>
+
+    </td>
+    </tr>
+{/section}
+</tbody>
+</table>
+<div class="mipaginacion">
+    <form style="display:inline">
+        <select name="ad" onchange="salta(this.form)">{section name=ii loop=$paginas}
+            <option {if $pagina_actual==$smarty.section.ii.iteration}selected="selected"{/if}
+                value="ventana_cliente_envia.php?pag={$smarty.section.ii.iteration}&i={$paginas[ii]}">Página {$smarty.section.ii.iteration}</option>
+        {/section}</select>
+    </form> de {$n_paginas}.
+</div>
+</p>
+</div>
+{literal}<script>
+/**
+ * Para hacer el salto automático en la paginación
+ */
+function salta(Sel){
+    if (Sel.ad.selectedIndex >= 0){
+        document.location=Sel.ad.options[Sel.ad.selectedIndex].value
+    }
+}
+</script>{/literal}
+{include file="final0.html"}
+{literal}
+<script>
+function actualizar(id,nombreape)
+{  
+    if (document.forms["transacciones"]=opener.document.forms["transacciones"])
+    {
+        opener.document.forms["transacciones"].cliente_envia_id.value=id;
+        opener.document.forms["transacciones"].cliente_envia_nombre.value=nombreape;
+    }
+    close();
+}
+</script>
+{/literal}

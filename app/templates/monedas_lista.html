@@ -1,0 +1,92 @@
+{include file="inicio.html"}
+
+<div class="container">
+	<div class="col-sm-6">
+		<div class="page-header">
+			<h1>Monedas <a class="btn btn-default btn-lg" title="Agregar" href="#"
+            onClick='eModal.iframe("monedas_agregar.php","Agregar Monedas")'><i
+            class="fa fa-plus"></i></a></h1>
+
+    </div>
+    </div>
+    <div class="col-sm-6">
+    <div class="page-header">
+    <form action="monedas_lista.php" method="POST">
+                <div class="input-group">
+                  <span class="input-group-addon" id="basic-addon1" style="padding:0 12px;"><i class="fa fa-search"></i></span>
+                  <input id="p" name="p" type="text" class="form-control" placeholder="Escriba aquí y pulse INTRO para buscar en monedas" aria-describedby="basic-addon1">
+                </div>
+            </form>
+    </div>
+    </div>
+</div>
+
+<div class="tabla">
+<div class="mipaginacion">
+    <form style="display:inline">
+        <select name="ad" onchange="salta(this.form)">{section name=ii loop=$paginas}
+            <option {if $pagina_actual==$smarty.section.ii.iteration}selected="selected"{/if}
+                value="monedas_lista.php?pag={$smarty.section.ii.iteration}&i={$paginas[ii]}">Página {$smarty.section.ii.iteration}</option>
+        {/section}</select>
+    </form> de {$n_paginas}.
+</div>
+<!-- div>{$datos_debug}</div -->
+</p>
+<table id="tabla_monedas" style="width:100%;" border="1"
+    class="table table-condensed table-hover table-striped table-bordered display">
+    <thead>
+    <tr>
+<th data-column-id="id">{$meta.id.etiqueta}</th>
+<th data-column-id="nombre">{$meta.nombre.etiqueta}</th>
+<th data-column-id="abreviacion">{$meta.abreviacion.etiqueta}</th>
+<th data-column-id="creado">{$meta.creado.etiqueta}</th>
+<th data-column-id="modificado">{$meta.modificado.etiqueta}</th>
+<th></th>
+    </tr></thead><tbody>
+{section name=i loop=$datos}
+    <tr>
+<td>{$datos[i].id}</td>
+<td>{$datos[i].nombre}</td>
+<td>{$datos[i].abreviacion}</td>
+<td>{$datos[i].creado}</td>
+<td>{$datos[i].modificado}</td>
+
+    <td class="text-center" style="white-space: nowrap;">
+        <a style="margin-bottom:3px" class="btn btn-default" title="Ficha de monedas" href="#"
+            onClick='eModal.ajax("monedas_ficha.php?id={$datos[i].id}","Datos de Monedas")'><i
+            class="fa fa-info"></i></a>
+
+        <a style="margin-bottom:3px" class="btn btn-default" title=""Eliminar monedas" href="#"
+            onClick='eModal.iframe("monedas_eliminar.php?id={$datos[i].id}","Eliminar Elemento de Monedas")'><i
+            class="fa fa-trash-o"></i></a>
+
+        <a style="margin-bottom:3px" class="btn btn-default" title="Modificar monedas" href="#"
+            onClick='eModal.iframe("monedas_modificar.php?id={$datos[i].id}","Modificación de Monedas")'><i
+            class="fa fa-pencil-square-o"></i></a>
+
+    </td>
+    </tr>
+{/section}
+</tbody>
+</table>
+<div class="mipaginacion">
+    <form style="display:inline">
+        <select name="ad" onchange="salta(this.form)">{section name=ii loop=$paginas}
+            <option {if $pagina_actual==$smarty.section.ii.iteration}selected="selected"{/if}
+                value="monedas_lista.php?pag={$smarty.section.ii.iteration}&i={$paginas[ii]}">Página {$smarty.section.ii.iteration}</option>
+        {/section}</select>
+    </form> de {$n_paginas}.
+</div>
+</p>
+</div>
+{literal}<script>
+/**
+ * Para hacer el salto automático en la paginación
+ */
+function salta(Sel){
+    if (Sel.ad.selectedIndex >= 0){
+        document.location=Sel.ad.options[Sel.ad.selectedIndex].value
+    }
+}
+</script>{/literal}
+{include file="final.html"}

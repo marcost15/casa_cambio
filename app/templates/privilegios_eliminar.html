@@ -1,0 +1,12 @@
+{include file="iniciov.html"}
+<div class="tabla">
+<table border="1" class="table table-condensed table-hover table-striped table-bordered display">
+<tr><th>ID</th><td>{$d.id}</td></tr>
+<tr><th>Pagina</th><td>{$d.pagina}</td></tr>
+<tr><th>Nivel de Acceso</th><td>{$d.nivel_id}</td></tr>
+<tr><th>Acceso</th><td>{$d.acceso}</td></tr>
+
+</table>
+</div>
+<a href="privilegios_eliminar2.php?id={$d.pagina}" class="btn btn-primary btn-lg active"> <i class="fa fa-check"></i> Sí, elimínelo</a>
+{include file="finalv.html"}

@@ -1,0 +1,25 @@
+{include file="iniciov.html"}
+<div class="tabla">
+<table border="1" class="table table-condensed table-hover table-striped table-bordered display">
+<tr><th>id</th><td>{$d.id}</td></tr>
+<tr><th>DNI</th><td>{$d.dni}</td></tr>
+<tr><th>nombre</th><td>{$d.nombre}</td></tr>
+<tr><th>apellido</th><td>{$d.apellido}</td></tr>
+<tr><th>login</th><td>{$d.login}</td></tr>
+<tr><th>nivel_id</th><td>{$d.nivel_id}</td></tr>
+<tr><th>sucursal_id</th><td>{$d.sucursal_id}</td></tr>
+<tr><th>estado</th><td>{$d.estado}</td></tr>
+
+<tr><th>direccion</th><td>{$d2.direccion}</td></tr>
+<tr><th>tlf_fijo</th><td>{$d2.tlf_fijo}</td></tr>
+<tr><th>tlf_movil</th><td>{$d2.tlf_movil}</td></tr>
+<tr><th>correo</th><td>{$d2.correo}</td></tr>
+{if {$d2.foto}}
+<tr><th>{$meta.foto.etiqueta}</th>
+<td><img src="./upload/personal/{$d2.foto}" width="120" height="120" /></td></tr>
+{/if}
+
+</table>
+</div>
+<a href="personal_eliminar2.php?id={$id}" class="btn btn-primary btn-lg active"> <i class="fa fa-check"></i> Sí, elimínelo</a>
+{include file="finalv.html"}

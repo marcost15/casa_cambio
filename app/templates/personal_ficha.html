@@ -1,0 +1,36 @@
+{include file="iniciov.html"}
+
+<table class="table table-condensed table-hover table-striped table-bordered display" style="max-width:540px;">
+<tr><th>{$meta.id.etiqueta}</th>
+<td>{$d.id}</td></tr>
+<tr><th>{$meta.dni.etiqueta}</th>
+<td>{$d.dni}</td></tr>
+<tr><th>{$meta.nombre.etiqueta}</th>
+<td>{$d.nombre}</td></tr>
+<tr><th>{$meta.apellido.etiqueta}</th>
+<td>{$d.apellido}</td></tr>
+<tr><th>{$meta.login.etiqueta}</th>
+<td>{$d.login}</td></tr>
+<tr><th>{$meta.nivel_id.etiqueta}</th>
+<td>{$d.nivel_id}</td></tr>
+<tr><th>{$meta.sucursal_id.etiqueta}</th>
+<td>{$d.sucursal_id}</td></tr>
+<tr><th>{$meta.estado.etiqueta}</th>
+<td>{$d.estado}</td></tr>
+
+<tr><th>{$meta.direccion.etiqueta}</th>
+<td>{$d2.direccion}</td></tr>
+<tr><th>{$meta.tlf_fijo.etiqueta}</th>
+<td>{$d2.tlf_fijo}</td></tr>
+<tr><th>{$meta.tlf_movil.etiqueta}</th>
+<td>{$d2.tlf_movil}</td></tr>
+<tr><th>{$meta.correo.etiqueta}</th>
+<td>{$d2.correo}</td></tr>
+{if {$d2.foto}}
+<tr><th>{$meta.foto.etiqueta}</th>
+<td><img src="./upload/personal/{$d2.foto}" width="120" height="120" /></td></tr>
+{/if}
+
+</table>
+
+{include file="finalv.html"}

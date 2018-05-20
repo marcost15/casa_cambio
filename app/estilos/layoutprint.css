@@ -1,0 +1,37 @@
+#cabecera{
+ 
+ }
+ 
+ #menuppal{
+ 
+ }
+ #cuerpo{
+ min-height:400px;
+ padding-top: 15px;
+  background-color:#ffffff;
+ }
+ #pie{
+ background-color:#ffffff;
+ margin-top:10px; }
+ .etiq1{
+ width:200px;
+ display:block;
+ }
+ 
+ a{
+ text-decoration:none;
+ }
+ 
+ /****************************formularios***************************/
+ .etiqueta1{ float:left; display:block; } .campo1{ float:left; display:block; overflow:auto; clear:right; } .fila_form{ display:block; clear:both; overflow:auto; } .form_impar{ background-color:#DAEDF9; border:solid 1 px #E9E9E9; }
+
+
+
+#mensaje{
+	width : 100%;
+	background-color: transparent;
+	text-align : center;
+	font-weight:bolder;
+	font-size:medium;
+	color:red;
+}

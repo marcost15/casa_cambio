@@ -1,0 +1,35 @@
+{include file="inicio.html"}
+<h1>Respaldos Realizados</h1>
+
+<div class="tabla">
+<table border="1" class="table table-condensed table-hover table-striped table-bordered display" id="tabla1">
+    <thead>
+    	<tr>
+		    <th>Fecha</th>
+			<th>Hora</th>
+			<th>Tamaño</th>
+			<th><a class="btn btn-default btn-lg" href="sqlrespaldo.php"><i class="fa fa-plus-square-o"></i> Agregar</a></th>
+    	</tr>
+    </thead>
+    <tbody>
+{section name=i loop=$a}
+	    <tr>
+		    <td>{$a[i].d}/{$a[i].mes}/{$a[i].a}</td>
+			<td>{$a[i].h}:{$a[i].m}:{$a[i].s}</td>
+			<td>{$b[i]} bytes</td>
+		    <td>
+		        <div class="btn-group">
+		            <a class="btn btn-default" title="Descargar"
+		                href="./respaldobd/{$a[i].basename}" download><i class="fa fa-download"></i></a>
+		            <a class="btn btn-default" title="Eliminar"
+		                href="sqlelim.php?a={$a[i].basename}"><i class="fa fa-trash-o"></i></a>
+		        </div>
+		    </td>
+	    </tr>
+{/section}
+	</tbody>
+</table>
+
+</div><!-- tabla -->
+
+{include file="final.html"}

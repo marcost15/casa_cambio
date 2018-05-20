@@ -1,0 +1,101 @@
+{include file="inicio.html"}
+
+<div class="container">
+	<div class="col-sm-6">
+		<div class="page-header">
+			<h1>Cambios <a class="btn btn-default btn-lg" title="Agregar" href="#"
+            onClick='eModal.iframe("cambio_agregar.php","Agregar Cambio")'><i
+            class="fa fa-plus"></i></a></h1>
+
+    </div>
+    </div>
+    <div class="col-sm-6">
+    <div class="page-header">
+    <form action="cambio_lista.php" method="POST">
+                <div class="input-group">
+                  <span class="input-group-addon" id="basic-addon1" style="padding:0 12px;"><i class="fa fa-search"></i></span>
+                  <input id="p" name="p" type="text" class="form-control" placeholder="Escriba aquí y pulse INTRO para buscar en cambios" aria-describedby="basic-addon1">
+                </div>
+            </form>
+    </div>
+    </div>
+</div>
+
+<div class="tabla">
+<div class="mipaginacion">
+    <form style="display:inline">
+        <select name="ad" onchange="salta(this.form)">{section name=ii loop=$paginas}
+            <option {if $pagina_actual==$smarty.section.ii.iteration}selected="selected"{/if}
+                value="cambio_lista.php?pag={$smarty.section.ii.iteration}&i={$paginas[ii]}">Página {$smarty.section.ii.iteration}</option>
+        {/section}</select>
+    </form> de {$n_paginas}.
+</div>
+<!-- div>{$datos_debug}</div -->
+</p>
+<table id="tabla_cambio" style="width:100%;" border="1"
+    class="table table-condensed table-hover table-striped table-bordered display">
+    <thead>
+    <tr>
+<th data-column-id="id">{$meta.id.etiqueta}</th>
+<th data-column-id="nombre">{$meta.nombre.etiqueta}</th>
+<th data-column-id="moneda1_id">{$meta.moneda1_id.etiqueta}</th>
+<th data-column-id="valor_moneda1">{$meta.valor_moneda1.etiqueta}</th>
+<th data-column-id="moneda2_id">{$meta.moneda2_id.etiqueta}</th>
+<th data-column-id="valor_moneda2">{$meta.valor_moneda2.etiqueta}</th>
+<th data-column-id="operacion">{$meta.operacion.etiqueta}</th>
+<th data-column-id="creado">{$meta.creado.etiqueta}</th>
+<th data-column-id="modificado">{$meta.modificado.etiqueta}</th>
+<th></th>
+    </tr></thead><tbody>
+{section name=i loop=$datos}
+    <tr>
+<td>{$datos[i].id}</td>
+<td>{$datos[i].nombre}</td>
+<td>{$datos[i].moneda1_id}</td>
+<td>{$datos[i].valor_moneda1}</td>
+<td>{$datos[i].moneda2_id}</td>
+<td>{$datos[i].valor_moneda2}</td>
+<td>{$datos[i].operacion}</td>
+<td>{$datos[i].creado}</td>
+<td>{$datos[i].modificado}</td>
+
+    <td class="text-center" style="white-space: nowrap;">
+        <a style="margin-bottom:3px" class="btn btn-default" title="Ficha de cambio" href="#"
+            onClick='eModal.ajax("cambio_ficha.php?id={$datos[i].id}","Datos de cambio")'><i
+            class="fa fa-info"></i></a>
+
+        <a style="margin-bottom:3px" class="btn btn-default" title=""Eliminar cambio" href="#"
+            onClick='eModal.iframe("cambio_eliminar.php?id={$datos[i].id}","Eliminar Elemento de Cambio")'><i
+            class="fa fa-trash-o"></i></a>
+
+        <a style="margin-bottom:3px" class="btn btn-default" title="Modificar cambio" href="#"
+            onClick='eModal.iframe("cambio_modificar.php?id={$datos[i].id}","Modificación de Cambio")'><i
+            class="fa fa-pencil-square-o"></i></a>
+
+    </td>
+    </tr>
+{/section}
+</tbody>
+</table>
+
+<div class="mipaginacion">
+    <form style="display:inline">
+        <select name="ad" onchange="salta(this.form)">{section name=ii loop=$paginas}
+            <option {if $pagina_actual==$smarty.section.ii.iteration}selected="selected"{/if}
+                value="cambio_lista.php?pag={$smarty.section.ii.iteration}&i={$paginas[ii]}">Página {$smarty.section.ii.iteration}</option>
+        {/section}</select>
+    </form> de {$n_paginas}.
+</div>
+</p>
+</div>
+{literal}<script>
+/**
+ * Para hacer el salto automático en la paginación
+ */
+function salta(Sel){
+    if (Sel.ad.selectedIndex >= 0){
+        document.location=Sel.ad.options[Sel.ad.selectedIndex].value
+    }
+}
+</script>{/literal}
+{include file="final.html"}

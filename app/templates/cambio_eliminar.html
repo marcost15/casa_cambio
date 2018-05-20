@@ -1,0 +1,17 @@
+{include file="iniciov.html"}
+<div class="tabla">
+<table border="1" class="table table-condensed table-hover table-striped table-bordered display">
+<tr><th>id</th><td>{$d.id}</td></tr>
+<tr><th>nombre</th><td>{$d.nombre}</td></tr>
+<tr><th>moneda1_id</th><td>{$d.moneda1_id}</td></tr>
+<tr><th>valor_moneda1</th><td>{$d.valor_moneda1}</td></tr>
+<tr><th>moneda2_id</th><td>{$d.moneda2_id}</td></tr>
+<tr><th>valor_moneda2</th><td>{$d.valor_moneda2}</td></tr>
+<tr><th>operacion</th><td>{$d.operacion}</td></tr>
+<tr><th>creado</th><td>{$d.creado}</td></tr>
+<tr><th>modificado</th><td>{$d.modificado}</td></tr>
+
+</table>
+</div>
+<a href="cambio_eliminar2.php?id={$id}" class="btn btn-primary btn-lg active"> <i class="fa fa-check"></i> Sí, elimínelo</a>
+{include file="finalv.html"}

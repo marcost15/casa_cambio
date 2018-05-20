@@ -1,0 +1,34 @@
+{include file="iniciov.html"}
+{$f}
+{include file="finalv.html"}
+
+{literal}
+<script>
+    var f5 = new LiveValidation('login'); f5.add( Validate.Presence ); f5.add( Validate.Length, { minimum: 6 } );
+    var f6 = new LiveValidation('tlf_fijo'); f6.add( Validate.Numericality ); f6.add( Validate.Length, { minimum: 7 } );
+    var f7 = new LiveValidation('clave'); f7.add( Validate.Presence ); f7.add( Validate.Length, { minimum: 6 } );
+    var f8 = new LiveValidation('clave_ver'); f8.add( Validate.Presence ); f8.add( Validate.Length, { minimum: 6 } ); f8.add( Validate.Confirmation, { match: 'clave' } );
+</script>
+<script>
+$(document).ready(function() {
+     var max = 0;
+     $(".etiqueta1").each(function(){
+         if ($(this).width() > max)
+             max = $(this).width();
+     });
+
+
+     $(".etiqueta1").width(max + 10);
+     $(".fila_form:odd").addClass('form_impar');
+
+     var max2 = 0;
+     $(".campo1").each(function(){
+         if ($(this).width() > max2)
+             max2 = $(this).width();
+     });
+
+     $(".campo1").width(max2 + 10);
+
+ });
+</script>
+{/literal}

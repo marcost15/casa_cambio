@@ -1,0 +1,57 @@
+{include file="inicio.html"}
+
+<div class="container">
+	<div class="col-sm-6">
+		<div class="page-header">
+			<h1>Privilegios <a class="btn btn-default btn-lg" title="Modificar" href="#"
+            onClick='eModal.iframe("privilegios_agregar.php","Modificar Privilegios")'><i
+            class="fa fa-plus"></i></a></h1>
+    </div>
+    </div>
+</div>
+
+<table id="tabla_privilegios" style="width:100%;" border="1"
+    class="table table-condensed table-hover table-striped table-bordered display">
+    <thead>
+    <tr>
+<th data-column-id="id" rowspan="2">&nbsp;</th> 
+<th data-column-id="pagina" rowspan="2">{$meta.pagina.etiqueta}</th>
+<th data-column-id="nivel_id" colspan="{$nniveles+1}">Privilegios</th>
+<tr>
+    {section name=n loop=$niveles}<th>{$niveles[n].nombre}</th>{/section}<th>&nbsp;</th>
+</tr>
+    </tr>
+    </thead>
+    <tbody>
+{section name=i loop=$tabla}<tr>
+        <th>{$smarty.section.i.index_next}</th>
+        <td><b>{$tabla[i].pagina}</b></td>
+        {section name=j loop=$tabla[i].priv}
+            <td align="center">{$tabla[i].priv[j]}</td>
+        {/section}
+        <td class="text-center" style="white-space: nowrap;">
+
+        <a style="margin-bottom:3px" class="btn btn-default" title="Eliminar Privilegio" onclick="return confirm('¿Esta seguro?')" href="?accion=eliminar&amp;id={$tabla[i].pagina}")'><i class="fa fa-trash-o"></i></a>
+
+        <a style="margin-bottom:3px" class="btn btn-default" title="Modificar privilegios" href="#"
+            onClick='eModal.iframe("privilegios_modificar.php?id={$tabla[i].pagina}","Modificación de Privilegio")'><i
+            class="fa fa-pencil-square-o"></i></a>
+
+    </td>
+</tr>{/section}
+
+</tbody>
+</table>
+</div>
+<p></p>
+{literal}<script>
+/**
+ * Para hacer el salto automático en la paginación
+ */
+function salta(Sel){
+    if (Sel.ad.selectedIndex >= 0){
+        document.location=Sel.ad.options[Sel.ad.selectedIndex].value
+    }
+}
+</script>{/literal}
+{include file="final.html"}

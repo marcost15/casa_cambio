@@ -1,0 +1,51 @@
+{include file="inicio.html"}
+{if $imp eq 'SI'}
+<td><img src="./imagenes/logo129x50.png" width="250" height="100" /></td>
+{literal}
+	<script type="text/javascript">
+		window.onload = function() {
+			window.print();
+  	//funciones a ejecutar
+	};
+	</script>
+{/literal}
+{/if}
+<h3><b>REPORTE DE CAJA</b></h3>
+
+<h5><b>SUCURSAL:</b> {$sucursal_nombre}</h5>
+<h5><b>FECHA DE INICIO:</b> {$fecha_ini}</h5>
+<h5><b>FECHA FINAL:</b> {$fecha_fin}</h5>
+
+<table class="table table-condensed table-hover table-striped table-bordered display">
+<thead>
+	<tr> 
+		<th rowspan="2">ESTADOS DE TRANSACCIONES</th>
+		{section name=p loop=$monedas}
+			<th colspan="2">{$monedas[p].nombre}  ({$monedas[p].abreviacion})</th>
+		{/section}
+	</tr>
+	<tr>
+		{section name=p loop=$monedas}
+			<td>Envia</td>
+    		<td>Recibe</td>
+    	{/section}
+	</tr>
+
+</thead>
+<tbody>
+	{section name=p loop=$datos}
+		<tr> 
+			<td>{$datos[p].nombre}</td>
+			{section name=j loop=$monedas}
+				<td>{$datos[p].moneda[j].enviado}</td>
+				<td>{$datos[p].moneda[j].recibido}</td>
+			{/section}
+		</tr>
+	{/section}
+</tbody>
+</table>
+
+{if $imp neq 'SI'}
+ <a style="margin-bottom:3px" class="btn btn-default" title="Imprimir Reporte" href="rp_cons_caja.php?sucursal_id={$sucursal_id}&fecha_ini={$fecha_ini}&fecha_fin={$fecha_fin}&imp=SI"><i class="fa fa-print fa-4x"></i></a>
+{/if}
+{include file="final.html"}

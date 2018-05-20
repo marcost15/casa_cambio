@@ -1,0 +1,32 @@
+{include file="iniciov.html"}
+
+<table class="table table-condensed table-hover table-striped table-bordered display" style="max-width:540px;">
+<tr><th>{$meta.id.etiqueta}</th>
+<td>{$d.id}</td></tr>
+<tr><th>{$meta.dni.etiqueta}</th>
+<td>{$d.dni}</td></tr>
+<tr><th>{$meta.nombre.etiqueta}</th>
+<td>{$d.nombre}</td></tr>
+<tr><th>{$meta.apellido.etiqueta}</th>
+<td>{$d.apellido}</td></tr>
+<tr><th>{$meta.direccion.etiqueta}</th>
+<td>{$d.direccion}</td></tr>
+<tr><th>{$meta.pais_id.etiqueta}</th>
+<td>{$d.pais_id}</td></tr>
+<tr><th>{$meta.tlf.etiqueta}</th>
+<td>{$d.tlf}</td></tr>
+<tr><th>{$meta.tlf2.etiqueta}</th>
+<td>{$d.tlf2}</td></tr>
+<tr><th>{$meta.correo.etiqueta}</th>
+<td>{$d.correo}</td></tr>
+{if {$d.adjunto}}
+<tr><th>{$meta.adjunto.etiqueta}</th>
+<td><a style="margin-bottom:3px" href="#"  onClick='eModal.iframe("./upload/clientes/{$d.adjunto}","Adjunto de Cliente")'><img src="./upload/clientes/{$d.adjunto}" width="120" height="120" /></a></td></tr>
+{/if}
+<tr><th>{$meta.creado.etiqueta}</th>
+<td>{$d.creado}</td></tr>
+<tr><th>{$meta.modificado.etiqueta}</th>
+<td>{$d.modificado}</td></tr>
+</table>
+
+{include file="finalv.html"}

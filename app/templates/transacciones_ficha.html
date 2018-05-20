@@ -1,0 +1,48 @@
+{include file="iniciov.html"}
+{if $imp eq 'SI'}
+	<td><img src="./imagenes/logo129x50.png" width="400" height="150" /></td>
+	<h3>COMPROBANTE DE TRANSACCION</h3>
+	{literal}
+	<script type="text/javascript">
+		window.onload = function() {
+			window.print();
+  	//funciones a ejecutar
+	};
+	</script>
+	{/literal}
+{/if}
+<table class="table table-condensed table-hover table-striped table-bordered display" style="max-width:540px;">
+<tr><th>{$meta.id.etiqueta}</th>
+<td>{$d.id}</td></tr>
+<tr><th>{$meta.cliente_envia_id.etiqueta}</th>
+<td>{$d.cliente_envia_id}</td></tr>
+<tr><th>{$meta.moneda_envia_id.etiqueta}</th>
+<td>{$d.moneda_envia_id}</td></tr>
+<tr><th>{$meta.monto_envia.etiqueta}</th>
+<td>{$d.monto_envia}</td></tr>
+<tr><th>{$meta.sucursal_envia_id.etiqueta}</th>
+<td>{$d.sucursal_envia_id}</td></tr>
+
+<tr><th>{$meta.cliente_recibe_id.etiqueta}</th>
+<td>{$d.cliente_recibe_id}</td></tr>
+<tr><th>{$meta.moneda_recibe_id.etiqueta}</th>
+<td>{$d.moneda_recibe_id}</td></tr>
+<tr><th>{$meta.monto_recibe.etiqueta}</th>
+<td>{$d.monto_recibe}</td></tr>
+<tr><th>{$meta.sucursal_recibe_id.etiqueta}</th>
+<td>{$d.sucursal_recibe_id}</td></tr>
+<tr><th>{$meta.estado_id.etiqueta}</th>
+<td>{$d.estado_id}</td></tr>
+<tr><th>{$meta.personal_id.etiqueta}</th>
+<td>{$d.personal_id}</td></tr>
+<tr><th>{$meta.creado.etiqueta}</th>
+<td>{$d.creado}</td></tr>
+<tr><th>{$meta.modificado.etiqueta}</th>
+<td>{$d.modificado}</td></tr>
+</table>
+
+{if $imp neq 'SI'}
+ <a style="margin-bottom:3px" class="btn btn-default" title="Imprimir Transaccion" href="transacciones_ficha.php?id={$d.id}&imp=SI" target="_blank"><i class="fa fa-print fa-4x"></i></a>
+{/if}
+
+{include file="finalv.html"}
